@@ -1,11 +1,11 @@
 # homebrew-tap
 
-Homebrew formulae for silee9019 projects.
+Homebrew formulae for silee-tools projects.
 
 ## Usage
 
 ```sh
-brew tap silee9019/tap
+brew tap silee-tools/tap
 brew install unid
 ```
 
