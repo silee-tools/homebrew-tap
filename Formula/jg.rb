@@ -5,15 +5,15 @@
 class Jg < Formula
   desc "A frecency-based CLI for quickly jumping to Git repositories"
   homepage "https://github.com/silee-tools/jg"
-  version "0.1.4"
+  version "0.1.5"
   license "MIT"
 
   depends_on "fzf"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.4/jg-v0.1.4-darwin-amd64.tar.gz"
-      sha256 "ac76c6ef21fec7d551e0518a25e21264d661341642aaea43043296454cbfde7f"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.5/jg-v0.1.5-darwin-amd64.tar.gz"
+      sha256 "3788aef4cd24801d3526d87082126185de1727b2ed003ab06cd343ec294d4f6a"
 
       define_method(:install) do
         bin.install "jg"
@@ -23,8 +23,8 @@ class Jg < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.4/jg-v0.1.4-darwin-arm64.tar.gz"
-      sha256 "6a722e049c8700d2aad8ff67cdce27aee20ad13eea49b52d68855b4803954b05"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.5/jg-v0.1.5-darwin-arm64.tar.gz"
+      sha256 "488afab661a7f3436c8e4c6634fa3bd40fcf2e067ac38d904dedd053e546e2e6"
 
       define_method(:install) do
         bin.install "jg"
@@ -37,8 +37,8 @@ class Jg < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.4/jg-v0.1.4-linux-amd64.tar.gz"
-      sha256 "c8d1b0b7d6c071bf91886b2aab5c9481af9f4b5a85fe5f8183e025755807b006"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.5/jg-v0.1.5-linux-amd64.tar.gz"
+      sha256 "8a0fb8e07687cd20ef4b38f0a72d9cacf100a935c327ab6772965189debcdb58"
       define_method(:install) do
         bin.install "jg"
         zsh_completion.install "completions/_jg"
@@ -47,8 +47,8 @@ class Jg < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.4/jg-v0.1.4-linux-arm64.tar.gz"
-      sha256 "d1c1d2c0b857147c0e50c902e160775c9c0917f6bb5b262b51041d4c8b2f1c44"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.5/jg-v0.1.5-linux-arm64.tar.gz"
+      sha256 "1b50faf82c725636488e1c2e1df53bab08290c4b5cc7d4b4c67391cbe6c927aa"
       define_method(:install) do
         bin.install "jg"
         zsh_completion.install "completions/_jg"
@@ -58,78 +58,10 @@ class Jg < Formula
     end
   end
 
-  def post_install
-    home = ENV.fetch("HOME", Dir.home)
-    login_shell = ENV.fetch("SHELL", "")
-    if login_shell.empty?
-      login_shell = `dscl . -read #{home} UserShell 2>/dev/null`.strip.split(":").last.to_s.strip rescue ""
-    end
-    login_shell = "/bin/zsh" if login_shell.empty? && File.exist?(File.join(home, ".zshrc"))
-
-    if login_shell.end_with?("zsh")
-      omz_dir = File.join(home, ".oh-my-zsh")
-
-      if Dir.exist?(omz_dir)
-        zsh_custom = ENV.fetch("ZSH_CUSTOM", File.join(omz_dir, "custom"))
-        plugin_dir = File.join(zsh_custom, "plugins", "jg")
-        FileUtils.mkdir_p(plugin_dir)
-        FileUtils.ln_sf(share/"jg"/"plugin"/"jg.plugin.zsh",
-                        File.join(plugin_dir, "jg.plugin.zsh"))
-
-        zshrc = File.join(home, ".zshrc")
-        if File.exist?(zshrc)
-          content = File.read(zshrc)
-          unless content.match?(/plugins\s*=\s*\([^)]*\bjg\b/m)
-            new_content = content.sub(
-              /^(\s*plugins\s*=\s*\()([^)]*?)(\s*\))/m
-            ) do
-              prefix, existing, suffix = $1, $2.rstrip, $3
-              if existing.include?("\n")
-                indent = existing.scan(/^(\s+)\S/).flatten.last || "  "
-                "#{prefix}#{existing}\n#{indent}jg#{suffix}"
-              else
-                "#{prefix}#{existing} jg#{suffix}"
-              end
-            end
-            if new_content != content
-              File.write(zshrc, new_content)
-              opoo "Added 'jg' to plugins in #{zshrc}"
-            else
-              opoo "Could not find plugins=(...) in #{zshrc}. Add 'jg' to your plugins manually."
-            end
-          end
-        end
-      else
-        zshrc = File.join(home, ".zshrc")
-        eval_line = 'eval "$(jg init zsh)"'
-        if File.exist?(zshrc)
-          content = File.read(zshrc)
-          unless content.include?(eval_line)
-            File.open(zshrc, "a") { |f| f.puts("\n#{eval_line}") }
-          end
-        end
-      end
-
-    elsif login_shell.end_with?("bash")
-      bashrc = File.join(home, ".bashrc")
-      eval_line = 'eval "$(jg init bash)"'
-      if File.exist?(bashrc)
-        content = File.read(bashrc)
-        unless content.include?(eval_line)
-          File.open(bashrc, "a") { |f| f.puts("\n#{eval_line}") }
-        end
-      end
-    end
-  end
-
   def caveats
     <<~EOS
-      Shell integration has been configured automatically.
-
-      If using oh-my-zsh, 'jg' was added to your plugins.
-      Otherwise, 'eval "$(jg init <shell>)"' was added to your shell rc file.
-
-      To uninstall completely, remove the jg entry from your shell rc file.
+      Run 'jg setup' to configure shell integration,
+      then restart your shell or run: exec $SHELL
     EOS
   end
 
