@@ -5,7 +5,7 @@ class Mydesk < Formula
   desc "macOS config backup & sync tool (Mackup alternative)"
   homepage "https://github.com/silee-tools/mydesk"
   url "https://github.com/silee-tools/mydesk/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+  sha256 "fb248ba5195fab82e681fe9e721a3685d32024966410d95835e5437093c36784"
   license "MIT"
 
   depends_on "go" => :build
