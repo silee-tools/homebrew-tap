@@ -18,13 +18,7 @@ class Appback < Formula
     (share/"appback/apps").install Dir["apps/*"]
     (share/"appback/completions").install Dir["completions/*"]
     bash_completion.install "completions/appback.bash" => "appback"
-  end
-
-  def caveats
-    <<~EOS
-      Zsh/Fish 사용자는 직접 completions을 설정하세요:
-        eval "$(appback --completions)"
-    EOS
+    zsh_completion.install "completions/_appback"
   end
 
   test do
