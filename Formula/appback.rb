@@ -5,7 +5,7 @@ class Appback < Formula
   desc "Mac app settings backup & restore CLI"
   homepage "https://github.com/silee-tools/appback"
   url "https://github.com/silee-tools/appback/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "32b243b332d3fb29e17164fd8068056c064b1d8dbc0f8fa15f109ad8d750551c"
+  sha256 "17c81f6dd499e1a326fcfb93fa838bdd6b151f76cede265a20808e07c7dd1aec"
   license "MIT"
 
   head "https://github.com/silee-tools/appback.git", branch: "main"
