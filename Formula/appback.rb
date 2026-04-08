@@ -16,9 +16,12 @@ class Appback < Formula
   def install
     bin.install "appback"
     (share/"appback/apps").install Dir["apps/*"]
-    (share/"appback/completions").install Dir["completions/*"]
     bash_completion.install "completions/appback.bash" => "appback"
     zsh_completion.install "completions/_appback"
+    # appback --completions 지원을 위해 share에 symlink 생성
+    (share/"appback/completions").mkpath
+    ln_s bash_completion/"appback", share/"appback/completions/appback.bash"
+    ln_s zsh_completion/"_appback", share/"appback/completions/_appback"
   end
 
   test do
