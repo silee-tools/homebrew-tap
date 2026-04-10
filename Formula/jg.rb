@@ -5,15 +5,15 @@
 class Jg < Formula
   desc "A frecency-based CLI for quickly jumping to Git repositories"
   homepage "https://github.com/silee-tools/jg"
-  version "0.1.11"
+  version "0.1.12"
   license "MIT"
 
   depends_on "fzf"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.11/jg-v0.1.11-darwin-amd64.tar.gz"
-      sha256 "ba96feee54ae9be34e28c9d80f19473e2c538b20f4688053d8f22302dedf08b4"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.12/jg-v0.1.12-darwin-amd64.tar.gz"
+      sha256 "f33b1dd1c6f779f61de346d8bf233b925685bc689ad25b4973d3058401ed6822"
 
       define_method(:install) do
         bin.install "jg"
@@ -23,8 +23,8 @@ class Jg < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.11/jg-v0.1.11-darwin-arm64.tar.gz"
-      sha256 "3e35b0aa473c6f5ff189262b15dffd4607aa933f60e6b9c998e5ce0376b9368d"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.12/jg-v0.1.12-darwin-arm64.tar.gz"
+      sha256 "b00cbff37d1c4e88be2fe6b9c5456469a0c4cff0e67f4e7c6fd7ad06de641278"
 
       define_method(:install) do
         bin.install "jg"
@@ -37,8 +37,8 @@ class Jg < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.11/jg-v0.1.11-linux-amd64.tar.gz"
-      sha256 "ab703b991549e4101816098ab4b3f7e80ba74b9192b072ddab87004d97efc09a"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.12/jg-v0.1.12-linux-amd64.tar.gz"
+      sha256 "61fc2f803eec9a30ef58f72e5f536100a4566a28fef2ef15b6fbe8b05a3e4020"
       define_method(:install) do
         bin.install "jg"
         zsh_completion.install "completions/_jg"
@@ -47,8 +47,8 @@ class Jg < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/silee-tools/jg/releases/download/v0.1.11/jg-v0.1.11-linux-arm64.tar.gz"
-      sha256 "fa0d36128eee0cf90c95b3bed37516f44111fce9420ca1c7aff57984ae66c573"
+      url "https://github.com/silee-tools/jg/releases/download/v0.1.12/jg-v0.1.12-linux-arm64.tar.gz"
+      sha256 "5a78c6bfcb0761bf96b37215b442114c6150684fcc53303ea8d35c915cdded5b"
       define_method(:install) do
         bin.install "jg"
         zsh_completion.install "completions/_jg"
