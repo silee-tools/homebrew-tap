@@ -1,3 +1,6 @@
+# typed: false
+# frozen_string_literal: true
+
 class Bmm < Formula
   desc "A thin CLI wrapper around beautiful-mermaid for rendering Mermaid diagrams"
   homepage "https://github.com/silee-tools/beautiful-mermaid-cli"
