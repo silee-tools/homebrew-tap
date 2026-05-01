@@ -1,0 +1,35 @@
+name: Formula Syntax
+
+on:
+  pull_request:
+    paths:
+      - "Formula/**/*.rb"
+      - ".github/workflows/formula-syntax.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "Formula/**/*.rb"
+      - ".github/workflows/formula-syntax.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  ruby-syntax:
+    name: Ruby syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Check formula syntax
+        run: |
+          for formula in Formula/*.rb; do
+            ruby -c "$formula"
+          done
