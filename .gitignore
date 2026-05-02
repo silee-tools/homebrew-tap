@@ -1,0 +1,7 @@
+# Local editor and OS files
+.DS_Store
+*.swp
+
+# Local automation/worktree artifacts
+.worktrees/
+.pr-body.md
