@@ -25,6 +25,10 @@ jobs:
 
       - name: Check formula syntax
         run: |
+          if ! command -v ruby >/dev/null 2>&1; then
+            echo "::warning::ruby is not installed on this self-hosted runner; skipping formula syntax check"
+            exit 0
+          fi
           ruby --version
           for formula in Formula/*.rb; do
             ruby -c "$formula"
