@@ -12,6 +12,17 @@ brew install jg
 brew install mydesk
 ```
 
+## Shell integration
+
+Some tools require an explicit setup command after installation. This matches the formula caveats shown by Homebrew:
+
+```sh
+jg setup
+mydesk install-shell
+```
+
+Restart your shell after running the setup command for the tool you installed.
+
 ## Formulae
 
 | Formula | Description |
