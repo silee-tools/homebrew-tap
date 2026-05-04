@@ -4,8 +4,8 @@
 class Mydesk < Formula
   desc "macOS config backup & sync tool (Mackup alternative)"
   homepage "https://github.com/silee-tools/mydesk"
-  url "https://github.com/silee-tools/mydesk/archive/refs/tags/v0.2.2.tar.gz"
-  sha256 "fb36e71050230d6687518c581e456d5b5e54b279a6e981de715efcbcf84e72ae"
+  url "https://github.com/silee-tools/mydesk/archive/refs/tags/v0.2.3.tar.gz"
+  sha256 "3ed7722642b080a554e7e2a2918c1ea817205424e5caf1c1fda3849919078591"
   license "MIT"
 
   head "https://github.com/silee-tools/mydesk.git", branch: "main"
