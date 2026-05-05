@@ -4,20 +4,20 @@
 class Unid < Formula
   desc "CLI tool for rendering ASCII diagrams using Unicode box-drawing characters"
   homepage "https://github.com/silee-tools/unid"
-  version "0.3.4"
+  version "0.3.5"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/silee-tools/unid/releases/download/v0.3.4/unid-v0.3.4-aarch64-apple-darwin.tar.gz"
-      sha256 "2a7fedcdc7342b3a385b623d0b9adbad126f07cb2d68081389421bc5cb2a9260"
+      url "https://github.com/silee-tools/unid/releases/download/v0.3.5/unid-v0.3.5-aarch64-apple-darwin.tar.gz"
+      sha256 "b96bce9817ee81237d377b5ddd11d1ebf63d3ac64cc489d524b15dc5b339e636"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/silee-tools/unid/releases/download/v0.3.4/unid-v0.3.4-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "fbdc3ac4ca05edc86b43240593154c9271c7570d3ebf0bd356da879822786b8d"
+      url "https://github.com/silee-tools/unid/releases/download/v0.3.5/unid-v0.3.5-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "bb055b3cbe57725908d96941edcea680e219c0430a570df9f0151646bec62279"
     end
   end
 
