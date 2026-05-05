@@ -10,6 +10,7 @@ brew install appback
 brew install bmm
 brew install jg
 brew install mydesk
+brew install unid
 ```
 
 ## Shell integration
@@ -31,3 +32,4 @@ Restart your shell after running the setup command for the tool you installed.
 | bmm | A thin CLI wrapper around beautiful-mermaid for rendering Mermaid diagrams |
 | jg | A frecency-based CLI for quickly jumping to Git repositories |
 | mydesk | macOS config backup & sync tool (Mackup alternative) |
+| unid | CLI tool for rendering ASCII diagrams using Unicode box-drawing characters |
