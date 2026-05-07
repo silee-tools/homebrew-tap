@@ -4,24 +4,24 @@
 class Bmm < Formula
   desc "A thin CLI wrapper around beautiful-mermaid for rendering Mermaid diagrams"
   homepage "https://github.com/silee-tools/beautiful-mermaid-cli"
-  version "0.1.6"
+  version "0.1.7"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/silee-tools/beautiful-mermaid-cli/releases/download/v0.1.6/bmm-v0.1.6-darwin-arm64.tar.gz"
-      sha256 "a34022507ca3578f52d90edf7355b458a2511d8616a6985ab4d1f13ba8a3ff67"
+      url "https://github.com/silee-tools/beautiful-mermaid-cli/releases/download/v0.1.7/bmm-v0.1.7-darwin-arm64.tar.gz"
+      sha256 "26a33dbbc23372f9d74a2dff27dfae6f5ad12fa7f001587a69b75684c76a712d"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/silee-tools/beautiful-mermaid-cli/releases/download/v0.1.6/bmm-v0.1.6-darwin-amd64.tar.gz"
-      sha256 "09115326af7cecf9d047c89a9a0d56731e4358d6931c40491b18c0814de58a3c"
+      url "https://github.com/silee-tools/beautiful-mermaid-cli/releases/download/v0.1.7/bmm-v0.1.7-darwin-amd64.tar.gz"
+      sha256 "bcd30d6910e982e8502ad4515921c0b2de48f16a107d65426691e53a46b65fac"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/silee-tools/beautiful-mermaid-cli/releases/download/v0.1.6/bmm-v0.1.6-linux-amd64.tar.gz"
-      sha256 "51184fe5f0fdb8d47b86d3d4c47751daf2c0dbab2dab866f0d7ced69ed4bc4c7"
+      url "https://github.com/silee-tools/beautiful-mermaid-cli/releases/download/v0.1.7/bmm-v0.1.7-linux-amd64.tar.gz"
+      sha256 "363e2491ec66a3b025c4f5b264da4bf771d0fca6a29e3a9fcba9e2b54b7b20f6"
     end
   end
 
