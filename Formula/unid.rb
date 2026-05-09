@@ -4,28 +4,28 @@
 class Unid < Formula
   desc "DSL → Unicode block diagram CLI"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/unid"
-  version "0.4.0"
+  version "0.4.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/unid/v#{version}/unid-v#{version}-darwin-arm64.tar.gz"
-      sha256 "e97beac5def4ea1edcc32a889a5f7d6de95423f3c8d7654857730fad16034f11"
+      sha256 "59fdff6cc82a4dd262efb2421f0152616d6dd818ed48bfd40c6a2454da3db8a7"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/unid/v#{version}/unid-v#{version}-darwin-amd64.tar.gz"
-      sha256 "357ad1bf0a9756da7d865c188c7dadbeafa999d06642460fd77316856ee48c5e"
+      sha256 "1817f4e68ee6ae386431680cd2943ee3af8cded3e7add50140a111591705ceb5"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/unid/v#{version}/unid-v#{version}-linux-amd64.tar.gz"
-      sha256 "785aa6e9f27eb9df1fbc0e5cfc35784315c2020d254d00412de6e37251c3befd"
+      sha256 "f23c70d93677d7582a475450ae251d15967df74a0e5560e22715ae7b85808f90"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/unid/v#{version}/unid-v#{version}-linux-arm64.tar.gz"
-      sha256 "fa9842669bd10c9e8170096a23ed8257a0ce9ded1f8cf7ed409fbb567518a79e"
+      sha256 "d2fcd3b426d94322ae61e549b30a299789495221fc302bbf682f4b92710cfec7"
     end
   end
 
