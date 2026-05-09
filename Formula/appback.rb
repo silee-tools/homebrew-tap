@@ -1,14 +1,16 @@
 # typed: false
 # frozen_string_literal: true
 
+# appback 은 Bash 스크립트 도구. release-please.yml 이 source archive 를 패킹.
+# 단일 tar.gz 안에 appback-v<X.Y.Z>/ 디렉토리가 있고 그 안에 appback 스크립트 +
+# completions + apps 설정 파일들.
 class Appback < Formula
   desc "Mac app settings backup & restore CLI"
-  homepage "https://github.com/silee-tools/appback"
-  url "https://github.com/silee-tools/appback/archive/refs/tags/v0.2.3.tar.gz"
-  sha256 "55d9f8948d194a73304dce253df4ef3f31f0f33bbaf5874ceb605763128fcbb6"
+  homepage "https://github.com/silee-tools/cli/tree/main/apps/appback"
+  url "https://github.com/silee-tools/cli/releases/download/appback/v#{version}/appback-v#{version}.tar.gz"
+  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  version "0.2.3"
   license "MIT"
-
-  head "https://github.com/silee-tools/appback.git", branch: "main"
 
   depends_on "gum"
   depends_on :macos

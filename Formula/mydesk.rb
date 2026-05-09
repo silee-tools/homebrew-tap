@@ -3,18 +3,34 @@
 
 class Mydesk < Formula
   desc "macOS config backup & sync tool (Mackup alternative)"
-  homepage "https://github.com/silee-tools/mydesk"
-  url "https://github.com/silee-tools/mydesk/archive/refs/tags/v0.2.4.tar.gz"
-  sha256 "523e1a78c75cf76b558862b371bee4739f43c545924a39a599f32cc405fe2485"
+  homepage "https://github.com/silee-tools/cli/tree/main/apps/mydesk"
+  version "0.2.4"
   license "MIT"
 
-  head "https://github.com/silee-tools/mydesk.git", branch: "main"
+  on_macos do
+    if Hardware::CPU.arm?
+      url "https://github.com/silee-tools/cli/releases/download/mydesk/v#{version}/mydesk-v#{version}-darwin-arm64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/silee-tools/cli/releases/download/mydesk/v#{version}/mydesk-v#{version}-darwin-amd64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
+  end
 
-  depends_on "go" => :build
+  on_linux do
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/silee-tools/cli/releases/download/mydesk/v#{version}/mydesk-v#{version}-linux-amd64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/silee-tools/cli/releases/download/mydesk/v#{version}/mydesk-v#{version}-linux-arm64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
+  end
 
   def install
-    ldflags = "-s -w -X main.version=#{version}"
-    system "go", "build", *std_go_args(ldflags: ldflags)
+    bin.install "mydesk"
   end
 
   def caveats
