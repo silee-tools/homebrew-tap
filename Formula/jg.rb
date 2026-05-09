@@ -16,22 +16,22 @@ class Jg < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-darwin-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "cce4d308f4cb86054575dfb2222779314a8bdee8959a15cf789455050c836549"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-darwin-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "9de800031ee3ba4262f04a4af2f3bf6966c3fc023e4e2a1a697d656f682da067"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-linux-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "16ed2384a1e4ed75681fcb3f1f2d2f70f271e0ce56194fdf6fe81f75ae48b4b6"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-linux-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "b2069a86d07b49217561db0b88ddca5a23b5938ea0f823bd8eac979b58b28389"
     end
   end
 
