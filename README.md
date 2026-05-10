@@ -6,20 +6,17 @@ Homebrew formulae for silee-tools projects.
 
 ```sh
 brew tap silee-tools/tap
-brew install appback
-brew install bmm
 brew install jg
-brew install mydesk
-brew install unid
+brew install saml2aws-auto
+brew install totp
 ```
 
 ## Shell integration
 
-Some tools require an explicit setup command after installation. This matches the formula caveats shown by Homebrew:
+`jg` requires an explicit setup command after installation. This matches the formula caveats shown by Homebrew:
 
 ```sh
 jg setup
-mydesk install-shell
 ```
 
 Restart your shell after running the setup command for the tool you installed.
@@ -28,8 +25,6 @@ Restart your shell after running the setup command for the tool you installed.
 
 | Formula | Description |
 |---------|-------------|
-| appback | Mac app settings backup & restore CLI |
-| bmm | A thin CLI wrapper around beautiful-mermaid for rendering Mermaid diagrams |
 | jg | A frecency-based CLI for quickly jumping to Git repositories |
-| mydesk | macOS config backup & sync tool (Mackup alternative) |
-| unid | CLI tool for rendering ASCII diagrams using Unicode box-drawing characters |
+| saml2aws-auto | Automatic saml2aws AzureAD MFA login using Keychain-backed TOTP |
+| totp | macOS Keychain-backed TOTP code generator |
