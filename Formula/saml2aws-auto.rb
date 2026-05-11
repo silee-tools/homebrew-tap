@@ -43,11 +43,6 @@ class Saml2awsAuto < Formula
         brew install saml2aws
 
       zsh plugin:
-        zinit snippet "#{share}/saml2aws-auto/saml2aws-auto.plugin.zsh"
-        # 또는
-        source "#{share}/saml2aws-auto/saml2aws-auto.plugin.zsh"
-
-      zsh plugin:
         if (( $+commands[saml2aws-auto] )); then
           local saml2aws_auto_bin="${commands[saml2aws-auto]:A}"
           local saml2aws_auto_plugin="${saml2aws_auto_bin:h:h}/share/saml2aws-auto/saml2aws-auto.plugin.zsh"
