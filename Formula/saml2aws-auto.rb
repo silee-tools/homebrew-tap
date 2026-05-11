@@ -5,7 +5,7 @@
 class Saml2awsAuto < Formula
   desc "Automatic saml2aws AzureAD MFA login using Keychain-backed TOTP"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/saml2aws-auto"
-  version "2.0.2"
+  version "2.0.3"
   license "MIT"
 
   depends_on "silee-tools/tap/totp"
@@ -13,22 +13,22 @@ class Saml2awsAuto < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-darwin-arm64.tar.gz"
-      sha256 "81aa3fc8705db5616f3fdfc7cc9000de52a629608628b99ab4a5c38c76ee356f"
+      sha256 "d370569dc64df515a8a5679b1116b4642ae7034b4b68d854b3302bb2d0e796fd"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-darwin-amd64.tar.gz"
-      sha256 "533a310aa77c425098811565b7bf54ff4875b2e5be5556f18ade02c3deaa4e5f"
+      sha256 "6a2a42636ad4908b05919b140c27dba7097728f951359613e008edf98a9814f6"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-linux-amd64.tar.gz"
-      sha256 "23ccfd2beff117fa22667aff38678d6318101249b8e227d2d5d882db9a2e1746"
+      sha256 "9541c512d6692c395d086798e866c3846698edcd0eaafba4da2c0052f323afc4"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-linux-arm64.tar.gz"
-      sha256 "58b47a2b8daea096175319b107643f8b519471dd64299ef9a8230cfa245d1216"
+      sha256 "1c1d87622d18b9e0863dfc330dc1ddac17cb29f93c05ccf3fcd1ff537f03599d"
     end
   end
 
@@ -46,6 +46,14 @@ class Saml2awsAuto < Formula
         zinit snippet "#{share}/saml2aws-auto/saml2aws-auto.plugin.zsh"
         # 또는
         source "#{share}/saml2aws-auto/saml2aws-auto.plugin.zsh"
+
+      zsh plugin:
+        if (( $+commands[saml2aws-auto] )); then
+          local saml2aws_auto_bin="${commands[saml2aws-auto]:A}"
+          local saml2aws_auto_plugin="${saml2aws_auto_bin:h:h}/share/saml2aws-auto/saml2aws-auto.plugin.zsh"
+          [[ -f "$saml2aws_auto_plugin" ]] && source "$saml2aws_auto_plugin"
+          unset saml2aws_auto_bin saml2aws_auto_plugin
+        fi
 
       환경변수:
         SAML2AWS_USERNAME              # saml2aws CLI native (필수)
