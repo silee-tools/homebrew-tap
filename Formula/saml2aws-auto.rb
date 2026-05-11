@@ -5,7 +5,7 @@
 class Saml2awsAuto < Formula
   desc "Automatic saml2aws AzureAD MFA login using Keychain-backed TOTP"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/saml2aws-auto"
-  version "2.0.5"
+  version "2.0.6"
   license "MIT"
 
   depends_on "silee-tools/tap/totp"
@@ -13,22 +13,22 @@ class Saml2awsAuto < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-darwin-arm64.tar.gz"
-      sha256 "ca126979d14619e11a323f5ee73f97cf1dc0855a144a7da9fa61dff9baf2d494"
+      sha256 "06d59cbc1c39a7c6f4468d55a5ca99f3c4422735cc99f8d5f5a36881e99597c2"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-darwin-amd64.tar.gz"
-      sha256 "e8addc1aee798d135bb21dddae4f0bd892d30d7d0bb6970533b2ebf715e229df"
+      sha256 "d40c99c7da3e30afcda875785f4028f1753801c7b0bb7abc58be30cb9daa2f5e"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-linux-amd64.tar.gz"
-      sha256 "bf8004b324af50e90be5a03bf60dd747322be2237695491a26392341d30bb989"
+      sha256 "aa5385545df9c3d01c92ef0f517c604f8367691b1cba6cad9910e049756e9919"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/saml2aws-auto/v#{version}/saml2aws-auto-v#{version}-linux-arm64.tar.gz"
-      sha256 "51723e133f95abf41b6d608ac99e9ceb43bb4dd8c4bd0f71bb20c1e653d157ed"
+      sha256 "27e9fe4636d88aee2c1dabd051d6d2b797ac39f39e2a5b76b888a8a71faaaa9d"
     end
   end
 
