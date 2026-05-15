@@ -6,7 +6,7 @@
 class Totp < Formula
   desc "macOS Keychain-backed TOTP code generator"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/totp"
-  version "1.0.2"
+  version "1.1.0"
   license "MIT"
 
   depends_on :macos
@@ -14,11 +14,11 @@ class Totp < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/totp/v#{version}/totp-v#{version}-darwin-arm64.tar.gz"
-      sha256 "bdabb5fb9d1202bc0d8bbc967aeb63e35707d80aeb50463356a1666160313cd5"
+      sha256 "404bcf2af22d037c951680fc449f3d1f20382a2087957d1215a6ef4a8e775a45"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/totp/v#{version}/totp-v#{version}-darwin-amd64.tar.gz"
-      sha256 "4865294bf013ac49ed723bd8109ffca3090441005282d509f31a8bc0a77cd887"
+      sha256 "16fc32cffb70082a5f58502c3ad3d7188183858566181e6c9070f9a1ab23e44e"
     end
   end
 
