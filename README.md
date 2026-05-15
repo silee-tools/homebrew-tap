@@ -25,6 +25,7 @@ Restart your shell after running the setup command for the tool you installed.
 
 | Formula | Description |
 |---------|-------------|
+| git-tidy | Safely deletes local branches whose upstream is gone |
 | jg | A frecency-based CLI for quickly jumping to Git repositories |
 | saml2aws-auto | Automatic saml2aws AzureAD MFA login using Keychain-backed TOTP |
 | totp | macOS Keychain-backed TOTP code generator |
