@@ -12,7 +12,7 @@ class GitTidy < Formula
   license "MIT"
 
   url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}.tar.gz"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "ee53a9558acb741b4eff0fb5048a6d05cf9777cbf683d09c944134669d940816"
 
   def install
     (share/"git-tidy").install "git-tidy.plugin.zsh"
