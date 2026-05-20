@@ -37,8 +37,11 @@ class Jg < Formula
 
   def install
     bin.install "jg"
+    bin.install_symlink "jg" => "jgw"
     zsh_completion.install "completions/_jg"
+    zsh_completion.install "completions/_jgw"
     bash_completion.install "completions/jg.bash" => "jg"
+    bash_completion.install "completions/jgw.bash" => "jgw"
     (share/"jg"/"plugin").install "plugin/jg.plugin.zsh"
   end
 
@@ -46,6 +49,9 @@ class Jg < Formula
     <<~EOS
       Run 'jg setup' to configure shell integration,
       then restart your shell or run: exec $SHELL
+
+      jgw is installed alongside jg as a sibling command for jumping
+      between git worktrees of the same repo (or across repos).
     EOS
   end
 
