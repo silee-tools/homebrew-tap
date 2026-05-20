@@ -43,6 +43,7 @@ class Jg < Formula
     bash_completion.install "completions/jg.bash" => "jg"
     bash_completion.install "completions/jgw.bash" => "jgw"
     (share/"jg"/"plugin").install "plugin/jg.plugin.zsh"
+    (share/"jg"/"plugin").install "plugin/jg.plugin.bash"
   end
 
   def caveats
