@@ -8,11 +8,11 @@
 class GitTidy < Formula
   desc "Safely deletes local branches whose upstream is gone"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/git-tidy"
-  version "0.2.0"
+  version "0.2.1"
   license "MIT"
 
   url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}.tar.gz"
-  sha256 "52210523e8a29be5dc6308168b2694c6abe49065aaf1dccb51d1d892b40b1444"
+  sha256 "1eacc2142efeb24a84ef48bd15e2fa6331e73e666a5dc0f936506e8d4aa1cd1e"
 
   def install
     (share/"git-tidy").install "git-tidy.plugin.zsh"
