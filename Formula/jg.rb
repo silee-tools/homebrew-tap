@@ -8,7 +8,7 @@
 class Jg < Formula
   desc "A frecency-based CLI for quickly jumping to Git repositories"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/jg"
-  version "0.4.0"
+  version "0.5.0"
   license "MIT"
 
   depends_on "fzf"
@@ -16,22 +16,22 @@ class Jg < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-darwin-arm64.tar.gz"
-      sha256 "3af3be58d834fe687ce29507c5b4a560544f6419e0144b99157e8b688bd418de"
+      sha256 "5e53479589cb8fb8267858a8b96237921df02a3ace79caa6c554ce717229cb86"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-darwin-amd64.tar.gz"
-      sha256 "2a573bcf934f82a412ed356edf51d2d6dc3b89edb7aa622e3165f0332430301c"
+      sha256 "1cf8bd88239805f76764b43b6b1d98da1f769c575976083e291d2a93cb2c47dd"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-linux-amd64.tar.gz"
-      sha256 "401409502c4f715b5270731effead12807bb191e004c9cf68bf524bd2b99885a"
+      sha256 "b58adb707773b01ce8ee1b05a948f7ea17cae1c97dfa9bbd4ee21cb957b0710d"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/jg/v#{version}/jg-v#{version}-linux-arm64.tar.gz"
-      sha256 "089d0f3bf32a008748412b9339e3aebeb7ad78ce873425dbcd4ecbce930d823f"
+      sha256 "2c1b697c158fe2420ca8a0920747dd9695e94f5d2b06b93dba7dc736bbf2699f"
     end
   end
 
