@@ -8,28 +8,28 @@
 class GitTidy < Formula
   desc "A CLI tool that finds done or stale local branches and batch-deletes them"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/git-tidy"
-  version "0.0.0"
+  version "0.3.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-darwin-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "102384e86235ba0eec9285cd40e0a72d6c922ba5288bf63286aae58b43e3195f"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-darwin-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "6e8b7dafc85696e7f88178a32b870cb2bfe1c2d96691eb6a42e42c0f75f6c31b"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-linux-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "a51e76274ecf284d88db52b63ff975d5d3c32e4e78e29a8521ca8237b2eba698"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-linux-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "7ddea846f43ab9d2b036fdae91413b44a434d001a8b57a36910e31910c2d87af"
     end
   end
 
