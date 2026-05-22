@@ -1,36 +1,45 @@
 # typed: false
 # frozen_string_literal: true
 
-# git-tidy. Go 바이너리가 없는 순수 zsh 플러그인. silee-tools/cli 모노레포의
-# release-please.yml 이 빌드 없이 git-tidy-v#{version}.tar.gz + checksums.txt 만
-# 첨부하고, 후속 step 의 scripts/update-homebrew-formula.py 가 version + sha256
-# 라인을 자동 갱신한다. 플랫폼 독립이라 OS/Arch 분기와 depends_on 이 없다.
+# silee-tools/cli 모노레포 prebuilt 바이너리. release-please.yml 의 GoReleaser
+# 가 4종 tar.gz + checksums.txt 를 GitHub Release 에 첨부하고, 그 후속 step 의
+# scripts/update-homebrew-formula.py 가 version + sha256 라인을 자동 갱신한다.
+# URL 에 #{version} 인터폴레이션 사용 — 스크립트는 version 만 교체하면 URL 도 자동 추적.
 class GitTidy < Formula
-  desc "Safely deletes local branches whose upstream is gone"
+  desc "A CLI tool that finds done or stale local branches and batch-deletes them"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/git-tidy"
-  version "0.2.1"
+  version "0.0.0"
   license "MIT"
 
-  url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}.tar.gz"
-  sha256 "1eacc2142efeb24a84ef48bd15e2fa6331e73e666a5dc0f936506e8d4aa1cd1e"
-
-  def install
-    (share/"git-tidy").install "git-tidy.plugin.zsh"
+  on_macos do
+    if Hardware::CPU.arm?
+      url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-darwin-arm64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-darwin-amd64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
   end
 
-  def caveats
-    <<~EOS
-      zsh plugin 로드 — ~/.zshrc 에 추가:
-        source "#{share}/git-tidy/git-tidy.plugin.zsh"
+  on_linux do
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-linux-amd64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-linux-arm64.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
+  end
 
-      사용:
-        git-tidy            # dry-run (삭제 대상만 표시)
-        git-tidy --run      # 실제 삭제
-        git-tidy --help     # 사용법
-    EOS
+  def install
+    bin.install "git-tidy"
+    zsh_completion.install "completions/_git-tidy"
+    bash_completion.install "completions/git-tidy.bash" => "git-tidy"
   end
 
   test do
-    assert_path_exists share/"git-tidy/git-tidy.plugin.zsh"
+    assert_match "git-tidy", shell_output("#{bin}/git-tidy --help 2>&1")
   end
 end
