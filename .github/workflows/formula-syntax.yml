@@ -29,7 +29,16 @@ jobs:
           ruby-version: "3.3"
 
       - name: Check formula syntax
+        shell: bash
         run: |
-          for formula in Formula/*.rb; do
+          shopt -s globstar nullglob
+          formulas=(Formula/**/*.rb)
+
+          if [ ${#formulas[@]} -eq 0 ]; then
+            echo "No formula files found"
+            exit 1
+          fi
+
+          for formula in "${formulas[@]}"; do
             ruby -c "$formula"
           done
