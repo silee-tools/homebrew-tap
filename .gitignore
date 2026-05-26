@@ -5,3 +5,4 @@
 # Local automation/worktree artifacts
 .worktrees/
 .pr-body.md
+pr_body.md
