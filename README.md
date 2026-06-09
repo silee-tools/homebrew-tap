@@ -6,6 +6,7 @@ Homebrew formulae for silee-tools projects.
 
 ```sh
 brew tap silee-tools/tap
+brew install git-tidy
 brew install jg
 brew install totp
 ```
