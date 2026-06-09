@@ -8,28 +8,28 @@
 class GitTidy < Formula
   desc "A CLI tool that finds done or stale local branches and batch-deletes them"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/git-tidy"
-  version "0.7.0"
+  version "0.7.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-darwin-arm64.tar.gz"
-      sha256 "edfde623736ff68bc9248a0890e30815a87288b0a288999ec4307ee7959e8e44"
+      sha256 "63e4d9171fc3ec1f9cd340e6c7c19826e1030843c889ce4f91dcb71d0dc534f8"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-darwin-amd64.tar.gz"
-      sha256 "ac6656e2e8923d60366a7b0f5a99e3d8e97648f011b30d693f9ad0abc1f251d6"
+      sha256 "950a73705aeb8ea46c5e8786ad8622f2f50594cc570f55ebf1b2276832b4dfdb"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-linux-amd64.tar.gz"
-      sha256 "64c509b2667ee802072e8675d833cc6e9d25f96c16e043edb4488095f095fe2d"
+      sha256 "3b62aff6c76df192f0500931b127f95df8b22a2c7f1644e2add9afe7abd9fc7d"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-tidy/v#{version}/git-tidy-v#{version}-linux-arm64.tar.gz"
-      sha256 "3aab99a36fe7d6441a2b194c7e59e0bbfc312cda78475adc1c4f2d789f944659"
+      sha256 "fe703ece4cf9690b2046cd7ae6fe554d67c78c4c59d67fd881cded94f688e9a6"
     end
   end
 
