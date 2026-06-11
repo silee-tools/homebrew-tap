@@ -15,22 +15,22 @@ class GitUpdateDefault < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-darwin-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "7ac9b52932229b9725c8cc71337ddbf6418a4b20ccb87b8ecef5a2a68d5b3be2"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-darwin-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "fd8f3d1b3a3973b814125b1c4ca669ac56d738d6c2977426c5e9a63b54d30638"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-linux-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "0d529def08a9108ebcb86eb250b6408d2ef9437918ba1b44fbbb3cb28ca1c07d"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-linux-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "bde95d8f0ce291bf9f35b79214d028707cf2a723ff9e535150cd9cadd7919968"
     end
   end
 
