@@ -7,6 +7,7 @@ Homebrew formulae for silee-tools projects.
 ```sh
 brew tap silee-tools/tap
 brew install git-tidy
+brew install git-update-default
 brew install jg
 brew install totp
 ```
@@ -26,5 +27,6 @@ Restart your shell after running the setup command for the tool you installed.
 | Formula | Description |
 |---------|-------------|
 | git-tidy | Safely deletes local branches whose upstream is gone |
+| git-update-default | Switch the current repo to the latest remote default branch |
 | jg | A frecency-based CLI for quickly jumping to Git repositories |
 | totp | macOS Keychain-backed TOTP code generator |
