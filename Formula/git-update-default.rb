@@ -5,7 +5,6 @@
 # 가 4종 tar.gz + checksums.txt 를 GitHub Release 에 첨부하고, 그 후속 step 의
 # scripts/update-homebrew-formula.py 가 version + sha256 라인을 자동 갱신한다.
 # URL 에 #{version} 인터폴레이션 사용 — 스크립트는 version 만 교체하면 URL 도 자동 추적.
-# 첫 릴리스 전 골격: sha256 은 placeholder("0"*64), version 은 첫 릴리스 예상값.
 class GitUpdateDefault < Formula
   desc "Switch the current repo to the latest remote default branch"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/git-update-default"
