@@ -6,3 +6,15 @@
 *.md text eol=lf
 .gitignore text eol=lf
 .editorconfig text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.tar.gz binary
+*.tgz binary
+*.gz binary
