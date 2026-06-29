@@ -12,6 +12,8 @@ brew install jg
 brew install totp
 ```
 
+`totp` uses macOS Keychain and is available on macOS only.
+
 ## Shell integration
 
 `jg` requires an explicit setup command after installation. This matches the formula caveats shown by Homebrew:
