@@ -8,28 +8,28 @@
 class GitUpdateDefault < Formula
   desc "Switch the current repo to the latest remote default branch"
   homepage "https://github.com/silee-tools/cli/tree/main/apps/git-update-default"
-  version "0.1.0"
+  version "0.2.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-darwin-arm64.tar.gz"
-      sha256 "7ac9b52932229b9725c8cc71337ddbf6418a4b20ccb87b8ecef5a2a68d5b3be2"
+      sha256 "a4898f16486449e1ee141629fcb63ce3afd1547024980aaec1f3d436f4b53660"
     end
     if Hardware::CPU.intel?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-darwin-amd64.tar.gz"
-      sha256 "fd8f3d1b3a3973b814125b1c4ca669ac56d738d6c2977426c5e9a63b54d30638"
+      sha256 "7fefb58bcf3996ef29f6877fa0088d031e8a3cbc795b9db308783af6a9c46b7a"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-linux-amd64.tar.gz"
-      sha256 "0d529def08a9108ebcb86eb250b6408d2ef9437918ba1b44fbbb3cb28ca1c07d"
+      sha256 "30c5608421546c5880046d5d7f00d4069538f8233fed3057108970a6126909ee"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/silee-tools/cli/releases/download/git-update-default/v#{version}/git-update-default-v#{version}-linux-arm64.tar.gz"
-      sha256 "bde95d8f0ce291bf9f35b79214d028707cf2a723ff9e535150cd9cadd7919968"
+      sha256 "67e452d6284b052f54d57ba8b47d6bd9c42c45a984bb9a303b5b3d03869b4bbd"
     end
   end
 
