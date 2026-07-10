@@ -46,6 +46,17 @@ class Jg < Formula
     (share/"jg"/"plugin").install "plugin/jg.plugin.bash"
   end
 
+  def post_install
+    state_dir = var/"silee-tools"/"jg"
+    state_dir.mkpath
+    state_file = state_dir/"active-channel"
+    temp_file = state_dir/"active-channel.tmp-#{Process.pid}"
+    temp_file.write <<~EOS
+      channel=release
+    EOS
+    temp_file.rename state_file
+  end
+
   def caveats
     <<~EOS
       Run 'jg setup' to configure shell integration,

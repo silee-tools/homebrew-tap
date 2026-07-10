@@ -4,12 +4,16 @@ on:
   pull_request:
     paths:
       - "Formula/**/*.rb"
+      - "scripts/check-runtime-channel-contract.sh"
+      - ".mise.toml"
       - ".github/workflows/formula-syntax.yml"
   push:
     branches:
       - main
     paths:
       - "Formula/**/*.rb"
+      - "scripts/check-runtime-channel-contract.sh"
+      - ".mise.toml"
       - ".github/workflows/formula-syntax.yml"
 
 permissions:
@@ -22,6 +26,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -42,3 +48,6 @@ jobs:
           for formula in "${formulas[@]}"; do
             ruby -c "$formula"
           done
+
+      - name: Check runtime channel contract
+        run: sh scripts/check-runtime-channel-contract.sh

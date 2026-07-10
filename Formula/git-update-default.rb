@@ -39,6 +39,17 @@ class GitUpdateDefault < Formula
     bash_completion.install "completions/git-update-default.bash" => "git-update-default"
   end
 
+  def post_install
+    state_dir = var/"silee-tools"/"git-update-default"
+    state_dir.mkpath
+    state_file = state_dir/"active-channel"
+    temp_file = state_dir/"active-channel.tmp-#{Process.pid}"
+    temp_file.write <<~EOS
+      channel=release
+    EOS
+    temp_file.rename state_file
+  end
+
   test do
     assert_match "git-update-default", shell_output("#{bin}/git-update-default --help 2>&1")
   end

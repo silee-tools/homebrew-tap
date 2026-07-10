@@ -41,6 +41,17 @@ class GitTidy < Formula
     bash_completion.install "completions/git-tidy.bash" => "git-tidy"
   end
 
+  def post_install
+    state_dir = var/"silee-tools"/"git-tidy"
+    state_dir.mkpath
+    state_file = state_dir/"active-channel"
+    temp_file = state_dir/"active-channel.tmp-#{Process.pid}"
+    temp_file.write <<~EOS
+      channel=release
+    EOS
+    temp_file.rename state_file
+  end
+
   test do
     assert_match "git-tidy", shell_output("#{bin}/git-tidy --help 2>&1")
   end

@@ -26,6 +26,17 @@ class Totp < Formula
     bin.install "totp"
   end
 
+  def post_install
+    state_dir = var/"silee-tools"/"totp"
+    state_dir.mkpath
+    state_file = state_dir/"active-channel"
+    temp_file = state_dir/"active-channel.tmp-#{Process.pid}"
+    temp_file.write <<~EOS
+      channel=release
+    EOS
+    temp_file.rename state_file
+  end
+
   def caveats
     <<~EOS
       totp 은 macOS Keychain 의 generic-password 항목을 시크릿 저장소로 사용합니다.

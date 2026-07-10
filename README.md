@@ -22,13 +22,14 @@ Run the repository hygiene check before changing formulae or tap metadata:
 mise run lint
 ```
 
-If `mise` is not available, run the underlying script directly:
+If `mise` is not available, run both underlying scripts directly:
 
 ```sh
 sh scripts/check-editorconfig-hygiene.sh
+sh scripts/check-runtime-channel-contract.sh
 ```
 
-Formula syntax is also checked in GitHub Actions whenever formula files or the workflow change.
+GitHub Actions checks Formula syntax and the runtime channel contract whenever Formula files, the contract script, the mise task, or the workflow changes.
 
 ## Shell integration
 
