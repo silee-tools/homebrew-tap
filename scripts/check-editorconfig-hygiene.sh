@@ -50,20 +50,18 @@ check_one() {
   return "$file_failed"
 }
 
+status_file=$(mktemp "${TMPDIR:-/tmp}/editorconfig-hygiene-status.XXXXXX")
+trap 'rm -f "$status_file"' EXIT HUP INT TERM
+printf '%s\n' 0 > "$status_file"
 failed=0
+
 (
   cd "$ROOT"
   git ls-files --cached --others --exclude-standard
 ) | while IFS= read -r rel; do
   check_one "$ROOT/$rel" || failed=1
-  printf '%s
-' "$failed" > "${TMPDIR:-/tmp}/editorconfig-hygiene-status-$$"
+  printf '%s\n' "$failed" > "$status_file"
 done
 
-status_file="${TMPDIR:-/tmp}/editorconfig-hygiene-status-$$"
-if [ -f "$status_file" ]; then
-  failed=$(tail -n 1 "$status_file")
-  rm -f "$status_file"
-fi
-
+failed=$(tail -n 1 "$status_file")
 exit "$failed"
