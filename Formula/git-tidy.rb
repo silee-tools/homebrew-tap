@@ -36,7 +36,6 @@ class GitTidy < Formula
   def install
     bin.install "git-tidy"
     bin.install_symlink "git-tidy" => "gtidy"
-    bin.install_symlink "git-tidy" => "gtidy!"
     zsh_completion.install "completions/_git-tidy"
     bash_completion.install "completions/git-tidy.bash" => "git-tidy"
   end
